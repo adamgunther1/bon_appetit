@@ -64,6 +64,17 @@ class PantryTest < Minitest::Test
     assert_equal shopping_list, @p.shopping_list
   end
 
+  def test_printing_shopping_list
+    @r.add_ingredient("Cheese", 25)
+    @r.add_ingredient("Flour", 20)
+    @r.add_ingredient("Spaghetti Noodles", 10)
+    @r.add_ingredient("Marinara Sauce", 10)
+    @p.add_to_shopping_list(@r)
+    expected_output = "* Cheese: 25\n* Flour: 20\n* Spaghetti Noodles: 10\n* Marinara Sauce: 10\n"
+    actual_output = @p.print_shopping_list
+    assert_equal expected_output, actual_output
+  end
+
 
 
 
