@@ -10,7 +10,6 @@ class PantryTest < Minitest::Test
   end
   
   def test_pantry_exists
-    
     assert_instance_of Pantry, @p
   end
 
@@ -105,7 +104,16 @@ class PantryTest < Minitest::Test
     assert_equal ["Pickles", "Peanuts"], @p.what_can_i_make
   end
 
-
-
+  def test_how_many_can_I_make
+    skip
+    @p.restock("Cheese", 10)
+    @p.restock("Flour", 20)
+    @p.restock("Brine", 40)
+    @p.restock("Cucumbers", 40)
+    @p.restock("Raw nuts", 20)
+    @p.restock("Salt", 20)
+    how_many = {"Brine Shot" => 4, "Peanuts" => 2}
+    assert_equal how_many, @p.how_many_can_i_make
+  end
 
 end

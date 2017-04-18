@@ -1,6 +1,6 @@
 require_relative 'recipe'
-class Pantry
 
+class Pantry
   attr_reader :stock, :shopping_list, :cookbook
 
   def initialize
@@ -43,7 +43,7 @@ class Pantry
   end
 
   def add_to_cookbook(recipe)
-      @cookbook[recipe.name] = recipe.ingredients
+    @cookbook[recipe.name] = recipe.ingredients
   end
 
   def what_can_i_make
