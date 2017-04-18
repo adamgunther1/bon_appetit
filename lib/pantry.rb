@@ -46,4 +46,18 @@ class Pantry
       @cookbook[recipe.name] = recipe.ingredients
   end
 
+  def what_can_i_make
+    what_i_can_make = []
+    if stock["Cheese"] >= 20 && stock["Flour"] >= 20
+      what_i_can_make << "Cheese Pizza"
+    end
+    if stock["Brine"] >= 10 && stock["Cucumbers"] >= 30
+      what_i_can_make << "Pickles"
+    end
+    if stock["Raw nuts"] >= 10 && stock["Salt"] >= 10
+      what_i_can_make << "Peanuts"
+    end
+    what_i_can_make
+  end
+
 end
