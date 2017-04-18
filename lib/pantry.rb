@@ -1,5 +1,4 @@
 require_relative 'recipe'
-require 'pry'
 class Pantry
 
   attr_reader :stock, :shopping_list
