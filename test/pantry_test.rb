@@ -75,6 +75,35 @@ class PantryTest < Minitest::Test
     assert_equal expected_output, actual_output
   end
 
+  def test_adding_recipe_to_cookbook
+    r1 = Recipe.new("Cheese Pizza")
+    r1.add_ingredient("Cheese", 20)
+    r1.add_ingredient("Flour", 20)
+
+    r2 = Recipe.new("Pickles")
+    r2.add_ingredient("Brine", 10)
+    r2.add_ingredient("Cucumbers", 30)
+
+    r3 = Recipe.new("Peanuts")
+    r3.add_ingredient("Raw nuts", 10)
+    r3.add_ingredient("Salt", 10)
+
+    @p.add_to_cookbook(r1)
+    @p.add_to_cookbook(r2)
+    @p.add_to_cookbook(r3)
+    cookbook = {"Cheese Pizza" => {"Cheese" => 20, "Flour" => 20}, "Pickles" => {"Brine" => 10, "Cucumbers" => 30}, "Peanuts" => {"Raw nuts" => 10, "Salt" => 10}}
+    assert_equal cookbook, @p.cookbook
+  end
+
+  def test_what_can_I_make
+    @p.restock("Cheese", 10)
+    @p.restock("Flour", 20)
+    @p.restock("Brine", 40)
+    @p.restock("Cucumbers", 40)
+    @p.restock("Raw nuts", 20)
+    @p.restock("Salt", 20)
+    assert_equal ["Pickles", "Peanuts"], @p.what_can_i_make
+  end
 
 
 
