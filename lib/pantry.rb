@@ -7,12 +7,11 @@ class Pantry
   def initialize
     @stock = {}
     @shopping_list = {}
-    @additions = 0
   end
 
   def stock_check(item)
     if stock[item].nil?
-      return 0
+      0
     else
       stock[item]
     end
@@ -28,18 +27,16 @@ class Pantry
   end
 
   def add_to_shopping_list(recipe)
-    addition_to_list = recipe.ingredients
-    if @additions == 0
-      @additions +=1
-      return @shopping_list = addition_to_list
+    if shopping_list.empty?
+      @shopping_list = recipe.ingredients
     else
-      return @shopping_list.merge!(addition_to_list){|key, oldval, newval| newval + oldval}
+      @shopping_list.merge!(recipe.ingredients){|key, oldval, newval| newval + oldval}
     end
   end
 
   def print_shopping_list
     output = ""
-    @shopping_list.each do |key, value|
+    shopping_list.each do |key, value|
       output << "* #{key}: #{value}\n"
     end
     p output
