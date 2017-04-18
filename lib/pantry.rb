@@ -2,7 +2,7 @@ require_relative 'recipe'
 
 class Pantry
 
-  attr_reader :stock
+  attr_reader :stock, :shopping_list
 
   def initialize
     @stock = {}
@@ -24,5 +24,10 @@ class Pantry
       stock[item] = exisiting_quantity + quantity
     end
   end
+
+  def add_to_shopping_list(recipe)
+    @shopping_list = recipe.ingredients
+  end
+
 
 end

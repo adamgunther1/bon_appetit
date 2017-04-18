@@ -40,7 +40,11 @@ class PantryTest < Minitest::Test
   end
 
   def test_adding_the_recipe_to_the_shopping_list
-    @p.add_to_shopping_list(@r)
+    @r.add_ingredient("Cheese", 20)
+    @r.add_ingredient("Flour", 20)
+    ingredient_list = {"Cheese" => 20, "Flour" => 20}
+    assert_equal ingredient_list, @p.add_to_shopping_list(@r)
+    assert_equal  @p.shopping_list, @p.add_to_shopping_list(@r)
   end
 
 
